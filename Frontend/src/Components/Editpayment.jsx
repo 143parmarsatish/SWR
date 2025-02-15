@@ -70,7 +70,7 @@ const EditPaymentDetails = ({ onClose, paymentData, fetchPayments }) => {
         </div>
 
         <form onSubmit={editPaymentDetails} className="grid gap-3">
-          <div>
+          {/* <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Upload QR Code</label>
             <label className="border rounded flex flex-col items-center p-3 cursor-pointer">
               {imageLoading ? (
@@ -86,7 +86,7 @@ const EditPaymentDetails = ({ onClose, paymentData, fetchPayments }) => {
               )}
               <input type="file" className="hidden" onChange={handleUploadChange} accept="image/*" />
             </label>
-          </div>
+          </div> */}
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">UPI ID</label>

@@ -8,7 +8,6 @@ import userDetailsRoute from './Routes/userDetails.js';
 import cookieParser from 'cookie-parser';
 import positionRoute from './Routes/positionRoute.js';
 import paymentRoutes from './Routes/paymentRoute.js';
-import uploadRoute from './Routes/uploadRoute.js';
 
 dotenv.config();
 
@@ -34,7 +33,7 @@ app.get("/", (request, response) => {
 app.use("/api/user", userDetailsRoute);
 app.use("/api/position", positionRoute);
 app.use("/api/payment", paymentRoutes);
-app.use("/api/upload", uploadRoute);
+// app.use("/api/upload", uploadRoute);
 
 // Error handling middleware
 app.use((err, req, res, next) => {

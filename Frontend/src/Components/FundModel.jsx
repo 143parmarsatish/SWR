@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import QRCode from '../assets/qr.png'
 
 
 const FundModal = ({ title, onClose }) => {
@@ -55,7 +56,7 @@ const FundModal = ({ title, onClose }) => {
         {/* Conditional Rendering */}
         {showQrCode ? (
           <div className="flex flex-col items-center">
-            <img src={paymentData?.QRCode} alt="QR Code" className="w-50 h-50 mb-4" />
+            <img src={QRCode} alt="QR Code" className="w-50 h-50 mb-4" />
             <button
               onClick={() => setShowQrCode(false)}
               className="px-6 py-2 bg-gray-500 text-white font-bold rounded-lg shadow-md hover:bg-gray-600 transition"
