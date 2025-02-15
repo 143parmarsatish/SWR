@@ -18,7 +18,7 @@ const PORT = process.env.PORT || 8000;
 // Middleware
 app.use(express.json());
 app.use(cors());
-app.use(morgan('dev')); // Use 'dev' format for morgan
+app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(helmet({
     crossOriginResourcePolicy: false,
@@ -36,16 +36,22 @@ app.use("/api/position", positionRoute);
 app.use("/api/payment", paymentRoutes);
 app.use("/api/upload", uploadRoute);
 
-
+// Error handling middleware
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).json({ message: 'Something went wrong!' });
+});
 
 // Connect to the database and start the server
-connectDB().then(() => {
-    console.log("Database Connected Successfully");
-    app.listen(PORT, () => {
-        console.log(`Server is running on port ${PORT}`);
+connectDB()
+    .then(() => {
+        console.log("Database Connected Successfully");
+        app.listen(PORT, () => {
+            console.log(`Server is running on port ${PORT}`);
+        });
+    })
+    .catch(err => {
+        console.error("Database connection failed", err);
     });
-}).catch(err => {
-    console.error("Database connection failed", err);
-});
 
 export default app;
