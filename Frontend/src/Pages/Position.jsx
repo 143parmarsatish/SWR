@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PositionCard from '../Components/PositionCard';
+import Loading from '../Components/Loading';
 
 const Position = () => {
   const [positions, setPositions] = useState([]); // Store API data
@@ -7,6 +8,7 @@ const Position = () => {
   const [error, setError] = useState(null); // Error state
 
   async function fetchPositionDetails() {
+    setLoading(true)
     try {
       const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/position/get-position`, {
         method: "GET",
@@ -34,7 +36,7 @@ const Position = () => {
           <p className='font-bold text-xl text-center lg:text-left'>Position</p>
         </div>
         {/* Show loading state */}
-        {loading && <p className='font-bold text-2xl text-center mt-5'>Loading positions...</p>}
+        {loading && <Loading/>}
 
         <div className='mt-2'>
           {positions.length > 0 ? (

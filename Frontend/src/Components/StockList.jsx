@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import stockData from "../Data/Stock";
 import BuySellComponent from "./BuySell";
+import SearchBox from "./SearchBox";
 
 const StockList = () => {
   const [stocks, setStocks] = useState(stockData);
@@ -53,7 +54,8 @@ const StockList = () => {
   }, []);
 
   return (
-    <div className="max-w-2xl mx-auto p-4 my-2 bg-white shadow-lg rounded-2xl">
+    <div className="max-w-2xl mx-auto p-4 my-1 bg-white shadow-lg rounded-2xl">
+      <SearchBox/>
       <h2 className="text-xl font-bold mb-4 bg-gray-200 p-2 rounded-xl w-fit">Stocks</h2>
       <ul className="divide-y divide-gray-300">
         {stocks.map((stock, index) => (

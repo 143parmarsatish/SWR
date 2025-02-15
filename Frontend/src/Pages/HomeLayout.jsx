@@ -3,7 +3,9 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { BottomNavigation, BottomNavigationAction, Paper } from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import EqualizerIcon from '@mui/icons-material/Equalizer';
+import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import ArticleIcon from "@mui/icons-material/Article";
 import Navbar from '../Components/Navbar';
 
@@ -55,8 +57,8 @@ const HomeLayout = () => {
           showLabels
         >
           <BottomNavigationAction label="Home" value="/home" icon={<HomeIcon />} />
-          <BottomNavigationAction label="Position" value="/home/position" icon={<LocationOnIcon />} />
-          <BottomNavigationAction label="Fund" value="/home/money" icon={<AttachMoneyIcon />} />
+          <BottomNavigationAction label="Positions" value="/home/position" icon={<EqualizerIcon />} />
+          <BottomNavigationAction label="Fund" value="/home/money" icon={<AccountBalanceIcon />} />
           <BottomNavigationAction label="News" value="news" icon={<ArticleIcon />} />
         </BottomNavigation>
       </Paper>
