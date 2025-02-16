@@ -155,3 +155,35 @@ export async function logoutUser(req, res){
         })    
     }
 }
+
+export async function allUserDetails(req, res){
+    try {
+        const allUser = await userModel.find({});
+        return res.json({
+            message : "All Users Details",
+            error : false,
+            success : true,
+            allUser,
+        })
+    } 
+    catch (error) {
+        return res.json({
+            message : error.message,
+            error : true,
+            success : false
+        })
+    }
+}
+
+export async function editUsers(req, res){
+    try {
+        // const {} = req.body;
+    } 
+    catch (error) {
+        return res.json({
+            message : error.message,
+            success : false,
+            error : true
+        })
+    }
+}

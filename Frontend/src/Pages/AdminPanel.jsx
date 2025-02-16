@@ -1,10 +1,11 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate, Outlet } from "react-router-dom"; // Import Outlet
 import EditPaymentDetails from "../Components/Editpayment";
 
 const AdminPanel = () => {
   const [showEditModal, setShowEditModal] = useState(false);
   const [paymentData, setPaymentData] = useState(null);
+  const navigate = useNavigate(); // Initialize useNavigate
 
   async function fetchPayment() {
     try {
@@ -14,7 +15,7 @@ const AdminPanel = () => {
       const result = await response.json();
 
       if (result.success) {
-        setPaymentData(result.data); // Store API data
+        setPaymentData(result.data);
       }
     } catch (error) {
       console.log(error);
@@ -30,15 +31,33 @@ const AdminPanel = () => {
       <h2 className="text-2xl font-bold text-center mb-4">Admin Panel</h2>
       <p className="text-center text-gray-600">Welcome to the Admin Dashboard.</p>
 
-      {/* Add Admin functionalities here */}
+      {/* Admin functionalities */}
       <div className="mt-6 flex flex-col gap-3">
-        <button className="w-full bg-blue-500 text-white p-4 rounded">Manage Users</button>
-        <button className="w-full bg-green-500 text-white p-4 rounded mt-2">View Transactions</button>
-        <button className="w-full bg-red-500 text-white p-4 rounded" 
-        onClick={() => setShowEditModal(true)}>Edit Payment Details </button>
+        <button
+          className="w-full bg-blue-500 text-white p-4 rounded"
+          onClick={() => navigate("/allusers")} // ✅ Correct navigation
+        >
+          Manage Users
+        </button>
+        <button className="w-full bg-green-500 text-white p-4 rounded mt-2">
+          View Transactions
+        </button>
+        <button
+          className="w-full bg-red-500 text-white p-4 rounded"
+          onClick={() => setShowEditModal(true)}
+        >
+          Edit Payment Details
+        </button>
       </div>
       
-      {showEditModal && <EditPaymentDetails fetchPayments={fetchPayment} paymentData={paymentData} onClose={() => setShowEditModal(false)} />}
+      {showEditModal && (
+        <EditPaymentDetails
+          fetchPayments={fetchPayment}
+          paymentData={paymentData}
+          onClose={() => setShowEditModal(false)}
+        />
+      )}
+
     </div>
   );
 };

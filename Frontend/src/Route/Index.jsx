@@ -7,6 +7,7 @@ import Position from '../Pages/Position';
 import NewsRedirect from '../Pages/NewsRedirect';
 import Money from '../Pages/Money';
 import AdminPanel from '../Pages/AdminPanel';  // ✅ Import Admin Panel
+import UsersTable from '../Components/UsersTable';
 
 const router = createBrowserRouter([
     {
@@ -39,9 +40,13 @@ const router = createBrowserRouter([
             },
             { 
                 path: "admin",  // ✅ Admin Panel ka route
-                element: <AdminPanel />
+                element: <AdminPanel />,
             },
         ],
+    },
+    {
+        path: "/allusers",
+        element: <UsersTable/>,
     }
 ]);
 
