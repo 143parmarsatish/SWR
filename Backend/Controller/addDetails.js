@@ -177,7 +177,23 @@ export async function allUserDetails(req, res){
 
 export async function editUsers(req, res){
     try {
-        // const {} = req.body;
+        const {_id, aadhar, pan, name, email, amount, amountTrade} = req.body;
+
+        const updatedUser = await userModel.findByIdAndUpdate({_id : _id}, {
+            aadhar,
+            pan,
+            name,
+            email,
+            amount,
+            amountTrade
+        })
+
+        return res.json({
+            message : "Users Updated",
+            error : false,
+            success : true,
+            updatedUser
+        })
     } 
     catch (error) {
         return res.json({
@@ -187,3 +203,41 @@ export async function editUsers(req, res){
         })
     }
 }
+
+export async function deleteUser(req, res) {
+    try {
+        const { id } = req.params; // Get user ID from URL params
+
+        if (!id) {
+            return res.status(400).json({
+                message: "User ID is required",
+                error: true,
+                success: false,
+            });
+        }
+
+        const deletedUser = await userModel.findByIdAndDelete(id);
+
+        if (!deletedUser) {
+            return res.status(404).json({
+                message: "User not found",
+                error: true,
+                success: false,
+            });
+        }
+
+        return res.json({
+            message: "User deleted successfully",
+            error: false,
+            success: true,
+            deletedUser,
+        });
+    } catch (error) {
+        return res.status(500).json({
+            message: error.message,
+            error: true,
+            success: false,
+        });
+    }
+}
+
