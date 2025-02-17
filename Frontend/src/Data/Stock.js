@@ -1,4 +1,4 @@
-const stockData = [
+export const stockData = [
     {
       "name": "Reliance Industries",
       "symbol": "RELIANCE",
@@ -142,4 +142,91 @@ const stockData = [
   ]
   
 
-export default stockData;
+  export const indexData = [
+    {
+      "name": "Nifty 50",
+      "symbol": "NIFTY50",
+      "price": 22959.35,
+      "change": +31.55,
+      "percent_change": "0.13%"
+    },
+    {
+      "name": "BSE Sensex",
+      "symbol": "SENSEX",
+      "price": 75403.65,
+      "change": -523.45,
+      "percent_change": "-0.69%"
+    },
+    {
+      "name": "Nifty Bank",
+      "symbol": "BANKNIFTY",
+      "price": 50382.10,
+      "change": 159.02,
+      "percent_change": "0.32%"
+    },
+    {
+      "name": "Nifty Midcap 100",
+      "symbol": "NIFTYMIDCAP100",
+      "price": 49849.85,
+      "change": 205.00,
+      "percent_change": "0.40%"
+    },
+    {
+      "name": "Nifty Financial Services",
+      "symbol": "FINNIFTY",
+      "price": 23446.50,
+      "change": -85.50,
+      "percent_change": "-0.37%"
+    },
+    {
+      "name": "Nifty Pharma",
+      "symbol": "NIFTYPHARMA",
+      "price": 41073.00,
+      "change": 0.00,
+      "percent_change": "0.00%"
+    },
+    {
+      "name": "Nifty FMCG",
+      "symbol": "NIFTYFMCG",
+      "price": 52945.00,
+      "change": -53.3,
+      "percent_change": "-0.36%"
+    },
+    {
+      "name": "Nifty Midcap 50",
+      "symbol": "NIFTYMIDCAP50",
+      "price": 13996.85,
+      "change": "+0.50",
+      "percent_change": "+0.00%"
+    },
+    {
+      "name": "Nifty Midcap 100",
+      "symbol": "NIFTYMIDCAP100",
+      "price": 49849.85,
+      "change": "+0.39",
+      "percent_change": "+0.00%"
+    },
+    {
+      "name": "Nifty Smallcap 100",
+      "symbol": "NIFTYSMALLCAP100",
+      "price": 15413.10,
+      "change": "+0.04",
+      "percent_change": "+0.00%"
+    },
+    {
+      "name": "India VIX",
+      "symbol": "INDIAVIX",
+      "price": 15.72,
+      "change": "+4.71",
+      "percent_change": "+29.70%"
+    },
+    {
+      "name": "Nifty FMCG",
+      "symbol": "NIFTYFMCG",
+      "price": 52945.00,
+      "change": "-53.3",
+      "percent_change": "-0.36%"
+    }
+  ];
+  
+ 
