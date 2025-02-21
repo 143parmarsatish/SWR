@@ -17,23 +17,28 @@ const EditPaymentDetails = ({ onClose, paymentData, fetchPayments }) => {
     setData((prev) => ({ ...prev, [name]: value }));
   }
 
-  async function handleUploadChange(e){
+  async function handleUploadChange(e) {
     const file = e.target.files[0];
-    if(!file){
+    if (!file) {
       return;
     }
-
+  
     setImageLoading(true);
-    const {url} = await uploadQR(file);
-
-    setData((prev) => {
-      return {
+    const response = await uploadQR(file);
+  
+    // Ensure only the string URL is assigned to QRCode
+    if (response?.data?.url) {
+      setData((prev) => ({
         ...prev,
-        QRCode : url
-      }
-    })
+        QRCode: response.data.url, // Store only the string URL
+      }));
+    } else {
+      console.error("Invalid response from uploadQR:", response);
+    }
+  
     setImageLoading(false);
   }
+  
 
   async function editPaymentDetails(e) {
     e.preventDefault();
@@ -70,7 +75,7 @@ const EditPaymentDetails = ({ onClose, paymentData, fetchPayments }) => {
         </div>
 
         <form onSubmit={editPaymentDetails} className="grid gap-3">
-          {/* <div>
+          <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Upload QR Code</label>
             <label className="border rounded flex flex-col items-center p-3 cursor-pointer">
               {imageLoading ? (
@@ -86,7 +91,7 @@ const EditPaymentDetails = ({ onClose, paymentData, fetchPayments }) => {
               )}
               <input type="file" className="hidden" onChange={handleUploadChange} accept="image/*" />
             </label>
-          </div> */}
+          </div>
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">UPI ID</label>
